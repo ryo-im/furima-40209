@@ -1,9 +1,11 @@
-<% if model.errors.any? %>
-<div class="error-alert">
-  <ul>
-    <% model.errors.full_messages.each do |message| %>
-    <li class='error-message'><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
+def xyz_there(str)
+  if str.include?(xyz)
+    puts "True"
+  elsif
+    puts "False"
+  else
+    puts "False"
+  end 
+end
+
+xyz_there('abcxyz')
