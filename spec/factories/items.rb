@@ -8,7 +8,6 @@ FactoryBot.define do
     prefecture             { Prefecture.all.sample }
     days_until_shipping    { DaysUntilShipping.all.sample }
     price                  { 500 }
-    association :user
 
     after(:build) do |item|
       item.image.attach(io: File.open('spec/fixtures/test_image.jpg'), filename: 'test_image.jpg')

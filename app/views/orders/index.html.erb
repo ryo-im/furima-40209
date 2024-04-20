@@ -30,6 +30,7 @@
       </p>
     </div>
     <%# /支払額の表示 %>
+    <%= include_gon %>
 
     <%= form_with model: @order_address, url: item_orders_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <%= render 'shared/error_messages', model: @order_address %>
@@ -123,6 +124,8 @@
       <%= f.submit "購入" ,class:"buy-red-btn", id:"button" %>
     </div>
     <% end %>
+    <%= javascript_importmap_tags 'card' %>
   </div>
 </div>
+<script type="text/javascript" src="https://js.pay.jp/v2/pay.js"></script>
 <%= render "shared/second-footer"%>
