@@ -22,12 +22,7 @@ class OrdersController < ApplicationController
 
   def item_order
     authenticate_user!
-
-    unless @item.order.nil?
-      redirect_to root_path
-    end
-
-    unless @item.user_id != current_user.id
+    unless @item.order.nil? || @item.user_id != current_user.id
       redirect_to root_path
     end
   end
