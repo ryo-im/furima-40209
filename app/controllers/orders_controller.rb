@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, except: :index
-  before_action :set_item, only: [:index, :create, :item_order, :pay_item]
+  before_action :authenticate_user!, only: :index
+  before_action :set_item, only: [:index, :create]
   before_action :item_order, only: :index
 
   def index
@@ -17,13 +17,6 @@ class OrdersController < ApplicationController
     else
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
       render :index, status: :unprocessable_entity
-    end
-  end
-
-  def item_order
-    authenticate_user!
-    unless @item.order.nil? || @item.user_id != current_user.id
-      redirect_to root_path
     end
   end
 
@@ -44,5 +37,12 @@ class OrdersController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
+  end
+end
+
+def item_order
+  authenticate_user!
+  unless @item.order.nil? || @item.user_id != current_user.id
+    redirect_to root_path
   end
 end
