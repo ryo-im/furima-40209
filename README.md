@@ -16,7 +16,7 @@ date# テーブル設計
 ### Association
 
 - has_many :items
-- has_many :purchases
+- has_many :orders
 
 ## items テーブル
 
@@ -35,9 +35,9 @@ date# テーブル設計
 ### Association
 
 - belongs_to :user
-- has_one :purchase
+- has_one :order
 
-## purchases テーブル
+## order テーブル
 
 | Column | Type       | Options     |
 | ------ | ---------- | ----------- |
@@ -54,14 +54,14 @@ date# テーブル設計
 
 | Column         | Type       | Options     |
 | -------------- | ---------- | ----------- |
-| post_code      | string     | null: false |
-| prefecture_id  | string     | null: false |
+| postal_code    | string     | null: false |
+| prefecture_id  | integer    | null: false |
 | municipality   | string     | null: false |
 | street_address | string     | null: false |
 | building       | string     |             |
 | phone_number   | string     | null: false |
-| purchase       | references | null: false, foreign_key: true |
+| order          | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :order
