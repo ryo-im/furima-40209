@@ -4,6 +4,12 @@ class OrdersController < ApplicationController
   before_action :item_order, only: :index
 
   def index
+    unless @item.order.nil?
+      redirect_to root_path
+    end
+    if @item.user == current_user
+      redirect_to root_path
+    end
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @order_address = OrderAddress.new
   end
